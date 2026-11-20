@@ -1,0 +1,1 @@
+import Navbar from './Navbar'; import Footer from './Footer'; import styles from './LandingLayout.module.css'; export default function LandingLayout({children}:{children:React.ReactNode}){return <div className={styles.layout}><Navbar/><main>{children}</main><Footer/></div>}
