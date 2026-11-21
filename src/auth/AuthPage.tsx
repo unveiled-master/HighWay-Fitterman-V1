@@ -1,10 +1,10 @@
 import {useState,type FormEvent} from 'react';
-import {Link,useNavigate,useSearchParams} from 'react-router-dom';
+import {Link,useNavigate,useSearchParams,useParams} from 'react-router-dom';
 import {ArrowLeft,ArrowRight,ShieldCheck,Eye,EyeOff,CheckCircle2,Wrench,Car,LockKeyhole} from 'lucide-react';
 import styles from './AuthPage.module.css';
 type Role='driver'|'mechanic'; type Mode='register'|'login'|'verify'|'reset';
 export default function AuthPage(){
- const [search]=useSearchParams();const [role,setRole]=useState<Role>((search.get('role') as Role)||'driver');const [mode,setMode]=useState<Mode>('register');
+ const [search]=useSearchParams();const params=useParams();const [role,setRole]=useState<Role>((search.get('role') as Role)||'driver');const [mode,setMode]=useState<Mode>((params.mode as Mode)||'register');
  const [name,setName]=useState(''),[phone,setPhone]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirm,setConfirm]=useState(''),[otp,setOtp]=useState('');
  const [showPassword,setShowPassword]=useState(false),[notice,setNotice]=useState(''),[error,setError]=useState('');const navigate=useNavigate();
  const reset=()=>{setNotice('');setError('')};const switchMode=(m:Mode)=>{reset();setMode(m)};
